@@ -107,8 +107,11 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: packages/demo/dist
+          artifact_name: github-pages-demo
 
       - uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-demo
         if: success() && github.ref == 'refs/heads/main'
 
       - run: bunx wrangler deploy
